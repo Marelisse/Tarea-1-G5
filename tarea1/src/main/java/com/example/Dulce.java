@@ -21,8 +21,3 @@ class Super8 extends Dulce{
         return "super8";
     }
 }
-
-public enum Dulces{
-    SNICKERS(),
-    SUPER8();
-}
