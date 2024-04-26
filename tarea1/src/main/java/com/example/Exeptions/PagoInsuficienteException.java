@@ -1,7 +1,7 @@
 package com.example.Exeptions;
 
 public class PagoInsuficienteException extends Exception {
-    public PagoIncorrectoException(String errorMessage){
+    public PagoInsuficienteException(String errorMessage){
         super(errorMessage);
     }
 }
