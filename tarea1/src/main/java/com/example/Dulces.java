@@ -1,26 +1,20 @@
 package tarea1.src.main.java.com.example;
 
-abstract class Dulce implements Producto{
-
-    private int serie;
+abstract class Dulce extends Producto{
     public Dulce(int serie){
-        this.serie = serie;
+        super(serie);
     }
-    public int getSerie(){
-        return serie;
+    public enum Dulces{
+        SNICKERS,
+        SUPER8;
     }
 }
-public enum Dulces{
-    SNICKERS,
-    SUPER8;
-}
-
 class Snickers extends Dulce{
     public Snickers(int serie){
         super(serie);
     }
     public String consumir(){
-        return "Snickers";
+        return "snickers";
     }
 }
 class Super8 extends Dulce{
@@ -28,6 +22,6 @@ class Super8 extends Dulce{
         super(serie);
     }
     public String consumir(){
-        return "Super8";
+        return "super8";
     }
 }

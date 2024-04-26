@@ -1,6 +1,12 @@
 package tarea1.src.main.java.com.example;
 
-interface Producto {
-    int getSerie();
-    String consumir();
-} 
+abstract class Producto {
+    private int serie;
+    public Producto(int serie) {
+        this.serie = serie;
+    }
+    public int getSerie(){
+        return serie;
+    }
+    public abstract String consumir();
+}
