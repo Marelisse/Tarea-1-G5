@@ -1,6 +1,6 @@
 package tarea1.src.main.java.com.example;
 
-abstract class Moneda {
+abstract class Moneda implements Comparable<Moneda> {
     public Moneda(){
 
     }
