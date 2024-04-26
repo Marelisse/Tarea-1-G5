@@ -1,4 +1,5 @@
-package tarea1.src.main.java.com.example;
+package com.example;
+import java.util.ArrayList;
 class Deposito<T> {
     private ArrayList<T> almacen;
 

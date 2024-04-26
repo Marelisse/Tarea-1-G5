@@ -1,4 +1,4 @@
-package tarea1.src.main.java.com.example;
+package com.example;
 
 class Java{
 

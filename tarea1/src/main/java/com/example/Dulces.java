@@ -1,12 +1,8 @@
-package tarea1.src.main.java.com.example;
+package com.example;
 
 abstract class Dulce extends Producto{
     public Dulce(int serie){
         super(serie);
-    }
-    public enum Dulces{
-        SNICKERS,
-        SUPER8;
     }
 }
 class Snickers extends Dulce{
@@ -24,4 +20,9 @@ class Super8 extends Dulce{
     public String consumir(){
         return "super8";
     }
+}
+
+public enum Dulces{
+    SNICKERS(),
+    SUPER8();
 }

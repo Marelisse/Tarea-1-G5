@@ -1,4 +1,4 @@
-package tarea1.src.main.java.com.example;
+package com.example;
 
 abstract class Bebida extends Producto{
     public Bebida(int serie) {
