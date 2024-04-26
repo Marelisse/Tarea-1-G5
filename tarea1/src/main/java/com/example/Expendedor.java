@@ -35,9 +35,9 @@ class Expendedor {
         return (Moneda)vueltoM.get();
     }
 
-    public Producto comprar(Moneda m, int cual) {
+    public Producto comprarProducto(Moneda m, int cual) {
         if(m == null) {
-            return null;
+            throw new PagoIncorrectoException("Moneda no valida")
         }
         Producto p = null;
         if(cual == 1 && m.getValor() >= precio) {
@@ -57,9 +57,11 @@ class Expendedor {
 
         if(p == null){
             vueltoM.add(m);
+            throw new NoHayProductoException("El deposito esta vacio")
         }else if(m.getValor() < precio){
             vueltoM.add(m);
             p = null;
+            throw new PagoInsuficienteException("Dinero insuficiente")
         } else if (m.getValor() >= precio){
 
             int cantMonedas100 = (m.getValor() - precio) / 100;
