@@ -1,19 +1,42 @@
 package com.example;
 
 enum LosProductos{
-    SNICKERS(1100),
-    SUPER8(900),
-    COCACOLA(1100),
-    SPRITE(900),
-    FANTA(800);
+    SNICKERS(1),
+    SUPER8(2),
+    COCACOLA(3),
+    SPRITE(4),
+    FANTA(5);
 
-    private final int precio;
+    private int precio;
+    private final int num;
 
-    LosProductos(int precio){
-        this.precio = precio;
+    LosProductos(int num){
+        this.num = num;
     }
 
     public int getPrecio(){
+        switch (num) {
+            case 1:
+                precio = 1100;
+                break;
+            case 2:
+                precio = 900;
+                break;
+            case 3:
+                precio = 1100;
+                break;
+            case 4:
+                precio = 900;
+                break;
+            case 5:
+                precio = 800;
+                break;
+            default:
+                break;
+        }
         return precio;
+    }
+    public int getNumero(){
+        return num;
     }
 }
