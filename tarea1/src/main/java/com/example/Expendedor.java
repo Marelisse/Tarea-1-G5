@@ -42,31 +42,31 @@ class Expendedor {
         switch (cual) {
             case 1:
                 cuantocuesta = LosProductos.SNICKERS.getPrecio();
-                if(m.getValor() >= cuantocuesta){
+                if(m.compareTo(cuantocuesta) >= 0){
                     p=(Dulce)snickers.get();
                 }
                 break;
             case 2:
                 cuantocuesta = LosProductos.SUPER8.getPrecio();
-                if(m.getValor() >= cuantocuesta){
+                if(m.compareTo(cuantocuesta) >= 0){
                     p=(Dulce)super8.get();
                 }
                 break;
             case 3:
                 cuantocuesta = LosProductos.COCACOLA.getPrecio();
-                if(m.getValor() >= cuantocuesta){
+                if(m.compareTo(cuantocuesta) >= 0){
                     p=(Bebida)coca.get();
                 }
                 break;
             case 4:
                 cuantocuesta = LosProductos.SPRITE.getPrecio();
-                if(m.getValor() >= cuantocuesta){
+                if(m.compareTo(cuantocuesta) >= 0){
                     p=(Bebida)sprite.get();
                 }
                 break;
             case 5:
                 cuantocuesta = LosProductos.FANTA.getPrecio();
-                if(m.getValor() >= cuantocuesta){
+                if(m.compareTo(cuantocuesta) >= 0){
                     p=(Bebida)fanta.get();
                 }
                 break;
@@ -77,11 +77,11 @@ class Expendedor {
         if(p == null){
             vueltoM.add(m);
             throw new NoHayProductoException("El deposito esta vacio");
-        }else if(m.getValor() < cuantocuesta){
+        }else if(m.compareTo(cuantocuesta) == -1){
             vueltoM.add(m);
             p = null;
             throw new PagoInsuficienteException("Dinero insuficiente");
-        } else if (m.getValor() >= cuantocuesta){
+        } else if (m.compareTo(cuantocuesta) >= 0){
 
             int cantMonedas100 = (m.getValor() - cuantocuesta) / 100;
 
