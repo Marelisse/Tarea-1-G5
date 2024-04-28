@@ -11,7 +11,7 @@ class Expendedor {
     private Deposito<Dulce> snickers;
     private Deposito<Dulce> super8;
     private Deposito<Moneda> vueltoM;
-    private int cuantocuesta; //Corregir Precios y número de producto cuando la numeración este terminada
+    private int cuantocuesta;
 
     public Expendedor(int cuantas) {
         this.coca = new Deposito<Bebida>();

@@ -18,10 +18,10 @@ class Moneda1500 extends Moneda{
     }
 
     @Override
-    public int compareTo(Moneda o) {
-        if (this.getValor() > o.getValor()) {
+    public int compareTo(int o) {
+        if (this.getValor() > o) {
             return 1;
-        } else if (this.getValor() < o.getValor()) {
+        } else if (this.getValor() < o) {
             return -1;
         }
         else {
@@ -39,10 +39,10 @@ class Moneda1000 extends Moneda {
     }
 
     @Override
-    public int compareTo(Moneda o) {
-        if (this.getValor() > o.getValor()) {
+    public int compareTo(int o) {
+        if (this.getValor() > o) {
             return 1;
-        } else if (this.getValor() < o.getValor()) {
+        } else if (this.getValor() < o) {
             return -1;
         }
         else {
@@ -58,10 +58,10 @@ class Moneda500 extends Moneda{
         return 500;
     }
     @Override
-    public int compareTo(Moneda o) {
-        if (this.getValor() > o.getValor()) {
+    public int compareTo(int o) {
+        if (this.getValor() > o) {
             return 1;
-        } else if (this.getValor() < o.getValor()) {
+        } else if (this.getValor() < o) {
             return -1;
         }
         else {
@@ -77,10 +77,10 @@ class Moneda100 extends Moneda{
         return 100;
     }
     @Override
-    public int compareTo(Moneda o) {
-        if (this.getValor() > o.getValor()) {
+    public int compareTo(int o) {
+        if (this.getValor() > o) {
             return 1;
-        } else if (this.getValor() < o.getValor()) {
+        } else if (this.getValor() < o) {
             return -1;
         }
         else {
