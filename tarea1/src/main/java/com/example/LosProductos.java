@@ -23,7 +23,7 @@ enum LosProductos{
                 precio = 900;
                 break;
             case 3:
-                precio = 1100;
+                precio = 1000;
                 break;
             case 4:
                 precio = 900;
