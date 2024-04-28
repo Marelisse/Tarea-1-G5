@@ -8,8 +8,9 @@ abstract class Moneda implements Comparable<Moneda> {
         return this;
     }
     public abstract int getValor();
+    public abstract int compareTo(int o);
 }
-class Moneda1500 extends Moneda{
+class Moneda1500 extends Moneda {
     public Moneda1500(){
         super();
     }
