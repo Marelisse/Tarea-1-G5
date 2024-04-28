@@ -13,7 +13,8 @@ class Deposito<T> {
     public T get() {
         if(almacen.size() != 0) {
             return almacen.remove(0);
+        }else{
+            return null;
         }
-        return null;
     }
 }
