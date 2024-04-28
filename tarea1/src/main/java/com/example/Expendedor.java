@@ -12,6 +12,7 @@ class Expendedor {
     private Deposito<Dulce> super8;
     private Deposito<Moneda> vueltoM;
     private int cuantocuesta;
+    private int cantMonedas100;
 
     public Expendedor(int cuantas) {
         this.coca = new Deposito<Bebida>();
@@ -29,12 +30,16 @@ class Expendedor {
         }
         this.vueltoM = new Deposito<Moneda>();
     }
-    public Moneda getVuelto(){
-        return (Moneda)vueltoM.get();
+    public int getVuelto(){
+        vueltoM.get();
+        return cantMonedas100;
     }
 
     public Producto comprarProducto(Moneda m, int cual) throws PagoInsuficienteException, NoHayProductoException, PagoIncorrectoException {
         if(m == null) {
+            Producto p = null;
+            System.out.println(p+", "+ m);
+            cantMonedas100 = 0;
             throw new PagoIncorrectoException("Moneda no valida");
         }
         Producto p = null;
@@ -76,20 +81,23 @@ class Expendedor {
 
         if(p == null){
             vueltoM.add(m);
+            System.out.println(p+", "+m.getValor());
+            vueltoM.get();
             throw new NoHayProductoException("El deposito esta vacio");
         }else if(m.compareTo(cuantocuesta) == -1){
             vueltoM.add(m);
             p = null;
+            System.out.println(p+", "+m.getValor());
+            vueltoM.get();
             throw new PagoInsuficienteException("Dinero insuficiente");
         } else if (m.compareTo(cuantocuesta) >= 0){
 
-            int cantMonedas100 = (m.getValor() - cuantocuesta) / 100;
+            cantMonedas100 = (m.getValor() - cuantocuesta) / 100;
 
 
             for (int i = 0; i < cantMonedas100; i++) {
                 Moneda sobrante = new Moneda100();
                 vueltoM.add(sobrante);
-
             }
         }
         return p;
