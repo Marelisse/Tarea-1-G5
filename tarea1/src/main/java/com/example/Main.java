@@ -5,33 +5,78 @@ import com.example.Exeptions.PagoIncorrectoException;
 import com.example.Exeptions.PagoInsuficienteException;
 
 public class Main {
-    public static void main(String[] args) {
-        Expendedor exp = new Expendedor(6);
+    public static void main(String[] args) throws PagoInsuficienteException, NoHayProductoException, PagoIncorrectoException {
+        Expendedor exp = new Expendedor(2);
+        Comprador c = null; 
         Moneda m = null;
-        Comprador c = null;
 
-        m = new Moneda1500();
         try {
+            m = new Moneda1500();
             c = new Comprador(m, 1, exp);
         } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
             e.printStackTrace();
         }
-        System.out.println(c.queConsumiste() + ", "+ c.cuantoVuelto());
+        
+        if (c != null && m != null) {
+            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+        }
 
-        m = new Moneda1500();
+        c = null; 
+        m = null;
+
         try {
-            c = new Comprador(m, 2, exp);
+            m = new Moneda100();
+            c = new Comprador(m, 1, exp);
         } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
             e.printStackTrace();
         }
-        System.out.println(c.queConsumiste() + ", "+ c.cuantoVuelto());
+        
+        if (c != null && m != null) {
+            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+        }
 
-        m = new Moneda1500();
+        c = null; 
+        m = null;
+
         try {
+            m = new Moneda1500();
+            c = new Comprador(m, 1, exp);
+        } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
+            e.printStackTrace();
+        }
+        
+        if (c != null && m != null) {
+            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+        }
+
+        c = null; 
+        m = null;
+
+        try {
+            m = null;
+            c = new Comprador(m, 1, exp);
+        } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
+            e.printStackTrace();
+        }
+        
+        if (c != null && m != null) {
+            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+        }
+
+        c = null; 
+        m = null;
+
+        try {
+            m = new Moneda1000();
             c = new Comprador(m, 3, exp);
         } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
             e.printStackTrace();
         }
-        System.out.println(c.queConsumiste() + ", "+ c.cuantoVuelto());
+        
+        if (c != null && m != null) {
+            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+        }
+
+
     }
 }
