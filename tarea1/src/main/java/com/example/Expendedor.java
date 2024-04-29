@@ -111,18 +111,19 @@ class Expendedor {
             default:
                 break;
         }
-        //¿Quedan productos disponibles?¿Es correcto el deposito?
-        if(p == null){
-            vueltoM.add(m);
-            System.out.println(p+", "+m.getValor());
-            vueltoM.get();
-            throw new NoHayProductoException("El deposito esta vacio");
-        }else if(m.compareTo(cuantocuesta) == -1){  //¿El pago es menor al precio?
+        
+        if(m.compareTo(cuantocuesta) == -1){  //¿El pago es menor al precio?
             vueltoM.add(m);
             p = null;
             System.out.println(p+", "+m.getValor());
             vueltoM.get();
             throw new PagoInsuficienteException("Dinero insuficiente");
+            //¿Quedan productos disponibles?¿Es correcto el deposito?
+        }else if(p == null){
+            vueltoM.add(m);
+            System.out.println(p+", "+m.getValor());
+            vueltoM.get();
+            throw new NoHayProductoException("El deposito esta vacio");
         } else if (m.compareTo(cuantocuesta) >= 0){//¿el pago es correcto?
 
             cantMonedas100 = (m.getValor() - cuantocuesta) / 100;
