@@ -1,5 +1,8 @@
 package com.example;
-
+/**
+ * Clase de Moneda que se utiliza para pago y/o vuelto
+ * @author Ariel Cisternas
+ */
 abstract class Moneda implements Comparable<Moneda> {
     public Moneda(){
 
