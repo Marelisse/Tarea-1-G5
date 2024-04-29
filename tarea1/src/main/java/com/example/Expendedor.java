@@ -3,17 +3,29 @@ package com.example;
 import com.example.Exeptions.NoHayProductoException;
 import com.example.Exeptions.PagoIncorrectoException;
 import com.example.Exeptions.PagoInsuficienteException;
-
+/**
+ * Clase de Expendedor en el cual se guardan las monedas y productos, siendo posible comprar estos ultimos
+ * @author Ariel Cisternas
+ * @author Maria Jesus Olivares
+ */
 class Expendedor {
+    /**Depositos donde se guardan Dulces, Bebidas y Monedas por separado */
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
     private Deposito<Bebida> fanta;
     private Deposito<Dulce> snickers;
     private Deposito<Dulce> super8;
     private Deposito<Moneda> vueltoM;
+    /**int del precio del producto */
     private int cuantocuesta;
+    /**int de la cantidad de Monedas de 100 que hay que dar como vuelto */
     private int cantMonedas100;
 
+    /**
+     * Constructor que pide la cantidad a rellenar en los depositos y los instancia, al igual que a VueltoM
+     * @param cuantas Productos a rellenar en cada Deposito (Si son 6, se rellenan 6 de cada tipo).
+     * Ademas de utilizarse para generar la serie de cada producto
+     */
     public Expendedor(int cuantas) {
         this.coca = new Deposito<Bebida>();
         this.sprite = new Deposito<Bebida>();
@@ -30,12 +42,32 @@ class Expendedor {
         }
         this.vueltoM = new Deposito<Moneda>();
     }
+    /**
+     * Metodo donde se utiliza un getter para proporcionar una cantidad de monedas e ir eliminando una por una las monedas utilizadas
+     * @return int de la cantidad de Monedas de 100 a dar como vuelto
+     */
     public int getVuelto(){
         vueltoM.get();
         return cantMonedas100;
     }
 
+    /**
+     * Metodo para Comprar un producto con una moneda y el numero correspondiente al producto (1 a 5).
+     * Primero se revisa si no existe la moneda (null), si es asi, se lanza una excepción de pago incorrecto.
+     * Luego, se realiza un switch case utilizando el Enum de los productos, revisando que la moneda ingresada sea mayor o igual al precio del producto seleccionado. En caso de ser efectivo, se remueve el producto del deposito, pero se guarda en p.
+     * Por ultimo se revisa el producto ¿existe en el deposito? de no ser asi, se lanza una excepcion de no hay producto.
+     * Se comparan la moneda con el precio, si no alcanza la moneda, entonces se lanza una excepción de pago insuficiente.
+     * Si todo resulta bien, entonces se añaden las monedas de 100 en vueltoM para el conteo y se calculan cuantas deben devolverse.
+     * @param m Moneda con la que se paga
+     * @param cual Numero del producto seleccionado (1 a 5)
+     * @return El producto escogido
+     * @throws PagoInsuficienteException
+     * @throws NoHayProductoException
+     * @throws PagoIncorrectoException
+     * @see LosProductos
+     */
     public Producto comprarProducto(Moneda m, int cual) throws PagoInsuficienteException, NoHayProductoException, PagoIncorrectoException {
+        //¿Se pagó correctamente?
         if(m == null) {
             Producto p = null;
             System.out.println(p+", "+ m);
@@ -44,6 +76,7 @@ class Expendedor {
         }
         Producto p = null;
 
+        //¿el pago es mayor o igual al precio?
         switch (cual) {
             case 1:
                 cuantocuesta = LosProductos.SNICKERS.getPrecio();
@@ -78,19 +111,19 @@ class Expendedor {
             default:
                 break;
         }
-
+        //¿Quedan productos disponibles?¿Es correcto el deposito?
         if(p == null){
             vueltoM.add(m);
             System.out.println(p+", "+m.getValor());
             vueltoM.get();
             throw new NoHayProductoException("El deposito esta vacio");
-        }else if(m.compareTo(cuantocuesta) == -1){
+        }else if(m.compareTo(cuantocuesta) == -1){  //¿El pago es menor al precio?
             vueltoM.add(m);
             p = null;
             System.out.println(p+", "+m.getValor());
             vueltoM.get();
             throw new PagoInsuficienteException("Dinero insuficiente");
-        } else if (m.compareTo(cuantocuesta) >= 0){
+        } else if (m.compareTo(cuantocuesta) >= 0){//¿el pago es correcto?
 
             cantMonedas100 = (m.getValor() - cuantocuesta) / 100;
 
