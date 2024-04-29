@@ -12,7 +12,7 @@ import com.example.Exeptions.PagoInsuficienteException;
 public class Main {
     /**
      * Se realizan pruebas creando un expendedor con una cantidad especifica para cada producto y se crea al comprador y moneda.
-     * Se realiza un try/catch con distintos valores para cada prueba (1.Moneda>=precio, 2.Moneda < Precio, 3. lo mismo que 1, 4. No hay producto, 5. Moneda == Precio)
+     * Se realiza un try/catch con distintos valores para cada prueba (1.Moneda>=precio, 2.Moneda < Precio, 3. lo mismo que 1, 4. Moneda no es valida, 5. Moneda == Precio, 6. No hay mas producto)
      * @param args
      * @throws PagoInsuficienteException
      * @throws NoHayProductoException
@@ -67,7 +67,7 @@ public class Main {
         c = null; 
         m = null;
         
-        //4.No hay Producto en el deposito
+        //4.Moneda no es valida
         try {
             m = null;
             c = new Comprador(m, 1, exp);
@@ -86,6 +86,21 @@ public class Main {
         try {
             m = new Moneda1000();
             c = new Comprador(m, 3, exp);
+        } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
+            e.printStackTrace();
+        }
+        
+        if (c != null && m != null) {
+            System.out.println(c.queConsumiste() + ", " + c.cuantoVuelto());
+        }
+
+        c = null; 
+        m = null;
+
+        //6. No hay mas producto
+         try {
+            m = new Moneda1500();
+            c = new Comprador(m, 1, exp);
         } catch (PagoInsuficienteException | NoHayProductoException | PagoIncorrectoException e) {
             e.printStackTrace();
         }
